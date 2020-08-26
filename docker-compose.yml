@@ -1,0 +1,65 @@
+version: '2'
+
+services:
+  mysql:
+    image: mysql:5.7.31
+    container_name: mysql-5.7
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+    networks:
+      - default
+  postgres:
+    image: postgres:9.6
+    container_name: postgres-9.6
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: secret
+    networks:
+      - default
+  redis:
+    image: redis:3.0
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - 6379:6379
+    restart: always
+    networks:
+      - default
+  mongo:
+    image: mongo:3.6.19
+    container_name: mongo-3.6
+    ports:
+      - 27017:27017
+    restart: always
+    volumes:
+      - ./mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    networks: 
+      - default
+
+volumes:
+  mysql_data:
+    driver: local
+  postgres_data:
+    driver: local
+  mongo_data:
+    driver: local
+
+networks:
+  default:
+    external:
+      name: db_network
