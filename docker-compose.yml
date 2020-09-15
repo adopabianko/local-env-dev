@@ -51,6 +51,15 @@ services:
     networks: 
       - default
 
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - 3333:8080
+    restart: always
+    networks: 
+      - default
+
 volumes:
   mysql_data:
     driver: local

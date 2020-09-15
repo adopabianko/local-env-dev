@@ -12,3 +12,4 @@ git clone https://github.com/adopabianko/docker-db-env.git
 - PostgreSql : 9.6
 - MongoDB : 3.6.19
 - Redis : 3.0
+- Adminer
