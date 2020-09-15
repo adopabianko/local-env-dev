@@ -1,7 +1,7 @@
 ## How to run
 
 ```bash
-git clone https://github.com/adopabianko/docker-db-env.git
+git clone https://github.com/adopabianko/db-env.git
 
 # Execute file run.sh
 ./run.sh
