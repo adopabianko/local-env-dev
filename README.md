@@ -13,3 +13,4 @@ git clone https://github.com/adopabianko/db-env.git
 - MongoDB : 3.6.19
 - Redis : 3.0
 - Adminer
+- Portainer (Web Application Monitoring Docker)
