@@ -7,7 +7,7 @@ git clone https://github.com/adopabianko/db-env.git
 ./run.sh
 ```
 
-## Database List
+## Container List
 - MySql : 5.7.31
 - PostgreSql : 9.6
 - MongoDB : 3.6.19
