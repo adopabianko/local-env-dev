@@ -76,6 +76,18 @@ services:
       - portainer_data:/data
     networks:
       - default
+  
+  cockroachdb:
+    image: cockroachdb/cockroach:latest
+    container_name: cockroach
+    ports:
+      - 26257:26257
+      - 3535:8080
+    restart: unless-stopped
+    volumes:
+      - ./cockroach_data:/cockroach/cockroach-data
+    networks:
+      - default
 
 volumes:
   mysql_data:

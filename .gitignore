@@ -1,4 +1,5 @@
 postgres_data/
 mysql_data/
 mongo_data/
+cockroach-data
 .DS_Store
