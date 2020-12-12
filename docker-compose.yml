@@ -53,7 +53,7 @@ services:
     networks: 
       - default
 
-  # http://localhost:3333
+  # http://localhost:8181
   adminer:
     image: adminer
     container_name: adminer
@@ -63,7 +63,7 @@ services:
     networks: 
       - default
   
-  # http://localhost:9494
+  # http://localhost:9000
   portainer:
     image: portainer/portainer-ce
     container_name: portainer
@@ -74,18 +74,6 @@ services:
     volumes: 
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
-    networks:
-      - default
-  
-  cockroachdb:
-    image: cockroachdb/cockroach:latest
-    container_name: cockroach
-    ports:
-      - 26257:26257
-      - 8383:8080
-    restart: unless-stopped
-    volumes:
-      - ./cockroach_data:/cockroach/cockroach-data
     networks:
       - default
 
