@@ -59,7 +59,7 @@ services:
     container_name: adminer
     restart: unless-stopped
     ports:
-      - 3333:8080
+      - 8181:8080
     networks: 
       - default
   
@@ -69,8 +69,8 @@ services:
     container_name: portainer
     restart: unless-stopped
     ports:
-      - 3434:8000
-      - 9494:9000
+      - 8282:8000
+      - 9000:9000
     volumes: 
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
@@ -82,12 +82,20 @@ services:
     container_name: cockroach
     ports:
       - 26257:26257
-      - 3535:8080
+      - 8383:8080
     restart: unless-stopped
     volumes:
       - ./cockroach_data:/cockroach/cockroach-data
     networks:
       - default
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    restart: unless-stopped
 
 volumes:
   mysql_data:
