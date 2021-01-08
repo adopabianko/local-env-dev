@@ -1,4 +1,4 @@
-## How to run
+## How to install
 
 ```bash
 git clone https://github.com/adopabianko/db-env.git
@@ -7,7 +7,7 @@ git clone https://github.com/adopabianko/db-env.git
 ./run.sh
 ```
 
-## Container List
+## Container Lists
 - MySql : 5.7.31
 - PostgreSql : 9.6
 - MongoDB : 3.6.19
