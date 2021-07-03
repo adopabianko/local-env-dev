@@ -53,7 +53,7 @@ services:
     networks: 
       - default
 
-  # http://localhost:8181
+  # http://localhost:8080
   adminer:
     image: adminer
     container_name: adminer
