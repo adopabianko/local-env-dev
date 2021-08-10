@@ -15,3 +15,4 @@ git clone https://github.com/adopabianko/db-env.git
 - Redis : 3.0
 - Adminer
 - Portainer (Web Application Monitoring Docker)
+- RabbitMQ
