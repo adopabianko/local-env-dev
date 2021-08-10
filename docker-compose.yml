@@ -29,16 +29,7 @@ services:
       POSTGRES_PASSWORD: secret
     networks:
       - default
-
-  redis:
-    image: redis:3.0
-    container_name: redis
-    restart: unless-stopped
-    ports:
-      - '6379:6379'
-    networks:
-      - default
-
+      
   mongo:
     image: mongo:3.6.19
     container_name: mongo-3.6
@@ -51,6 +42,29 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: secret
     networks: 
+      - default
+      
+  couchdb:
+    image: couchdb:3.1
+    container_name: couchdb-3.1
+    ports:
+      - '5984:5984'
+    restart: unless-stopped
+    volumes:
+      - ./couchdb_data:/opt/couchdb/etc/local.d -d couchdb
+    environment:
+      COUCHDB_USER: root
+      COUCHDB_PASSWORD: secret
+    networks:
+      - default
+
+  redis:
+    image: redis:3.0
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    networks:
       - default
 
   # http://localhost:8080
@@ -93,6 +107,8 @@ volumes:
   postgres_data:
     driver: local
   mongo_data:
+    driver: local
+  couchdb_data:
     driver: local
   portainer_data:
     driver: local
