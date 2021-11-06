@@ -16,3 +16,4 @@ git clone https://github.com/adopabianko/db-env.git
 - Adminer
 - Portainer (Web Application Monitoring Docker)
 - RabbitMQ
+- PgAdmin4
