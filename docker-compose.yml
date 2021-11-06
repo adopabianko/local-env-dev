@@ -101,6 +101,18 @@ services:
     restart: unless-stopped
     networks:
       - default
+      
+  pgadmin4:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    ports:
+      - '8282:80'
+    restart: unless-stopped
+    environment: 
+      PGADMIN_DEFAULT_EMAIL: 'admin@admin.com'
+      PGADMIN_DEFAULT_PASSWORD: 'secret'
+    networks:
+      - default
 
 volumes:
   mysql_data:
