@@ -128,5 +128,5 @@ volumes:
 
 networks:
   default:
-    external:
-      name: db_network
+    name: db_network
+    external: true
