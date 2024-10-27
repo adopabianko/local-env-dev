@@ -1,9 +1,7 @@
-version: '3'
-
 services:
   mysql:
-    image: mysql:5.7.31
-    container_name: mysql-5.7
+    image: mysql:latest
+    container_name: mysql
     ports:
       - 3306:3306
     volumes:
@@ -14,11 +12,11 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: secret
     networks:
-      - default
+      - db_network
       
   postgres:
-    image: postgres:9.6
-    container_name: postgres-9.6
+    image: postgres:latest
+    container_name: postgres
     ports:
       - '5432:5432'
     restart: unless-stopped
@@ -27,12 +25,14 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: secret
+    mem_limit: 1024m
+    cpus: "0.5"
     networks:
-      - default
+      - db_network
       
   mongo:
-    image: mongo:3.6.19
-    container_name: mongo-3.6
+    image: mongo:latest
+    container_name: mongo
     ports:
       - '27017:27017'
     restart: unless-stopped
@@ -46,8 +46,8 @@ services:
       
   # http://localhost:5984/_utils/# 
   couchdb:
-    image: couchdb:3.1
-    container_name: couchdb-3.1
+    image: couchdb:latest
+    container_name: couchdb
     ports:
       - '5984:5984'
     restart: unless-stopped
@@ -57,16 +57,16 @@ services:
       COUCHDB_USER: root
       COUCHDB_PASSWORD: secret
     networks:
-      - default
+      - db_network
 
   redis:
-    image: redis:3.0
+    image: redis:latest
     container_name: redis
     restart: unless-stopped
     ports:
       - '6379:6379'
     networks:
-      - default
+      - db_network
 
   # http://localhost:8080
   adminer:
@@ -90,7 +90,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
     networks:
-      - default
+      - db_network
 
   rabbitmq:
     image: rabbitmq:management
@@ -100,7 +100,7 @@ services:
       - '15672:15672'
     restart: unless-stopped
     networks:
-      - default
+      - db_network
       
   pgadmin4:
     image: dpage/pgadmin4
@@ -112,7 +112,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: 'admin@admin.com'
       PGADMIN_DEFAULT_PASSWORD: 'secret'
     networks:
-      - default
+      - db_network
 
 volumes:
   mysql_data:
@@ -127,6 +127,4 @@ volumes:
     driver: local
 
 networks:
-  default:
-    name: db_network
-    external: true
+  db_network: {}

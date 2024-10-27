@@ -1,18 +1,16 @@
-## How to install
+## How to run
 
 ```bash
-git clone https://github.com/adopabianko/db-env.git
-
 # Execute file run.sh
-./run.sh
+make start
 ```
 
 ## Container Lists
-- MySql : 5.7.31
-- PostgreSql : 9.6
-- MongoDB : 3.6.19
-- CouchDB 3.1
-- Redis : 3.0
+- MySql
+- PostgreSql
+- MongoDB
+- CouchDB
+- Redis
 - Adminer
 - Portainer (Web Application Monitoring Docker)
 - RabbitMQ
