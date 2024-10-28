@@ -15,7 +15,7 @@ services:
       - local_env_dev_network
       
   postgres:
-    image: postgres:13
+    image: postgres:latest
     container_name: postgres
     ports:
       - '5432:5432'
