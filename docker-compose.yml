@@ -1,18 +1,18 @@
 services:
-  mysql:
-    image: mysql:latest
-    container_name: mysql
-    ports:
-      - 3306:3306
-    volumes:
-      - ./mysql_data:/var/lib/mysql
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_USER: root
-      MYSQL_PASSWORD: secret
-    networks:
-      - local_env_dev_network
+  # mysql:
+  #   image: mysql:latest
+  #   container_name: mysql
+  #   ports:
+  #     - 3306:3306
+  #   volumes:
+  #     - ./mysql_data:/var/lib/mysql
+  #   restart: unless-stopped
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: secret
+  #     MYSQL_USER: root
+  #     MYSQL_PASSWORD: secret
+  #   networks:
+  #     - local_env_dev_network
       
   postgres:
     image: postgres:latest
@@ -23,41 +23,41 @@ services:
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
     mem_limit: 1024m
     cpus: "0.5"
     networks:
       - local_env_dev_network
       
-  mongo:
-    image: mongo:latest
-    container_name: mongo
-    ports:
-      - '27017:27017'
-    restart: unless-stopped
-    volumes:
-      - ./mongo_data:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: secret
-    networks: 
-      - local_env_dev_network
+  # mongo:
+  #   image: mongo:latest
+  #   container_name: mongo
+  #   ports:
+  #     - '27017:27017'
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./mongo_data:/data/db
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: secret
+  #   networks: 
+  #     - local_env_dev_network
   
-  # http://localhost:5984/_utils/# 
-  couchdb:
-    image: couchdb:latest
-    container_name: couchdb
-    ports:
-      - '5984:5984'
-    restart: unless-stopped
-    volumes:
-      - ./couchdb_data:/opt/couchdb/etc/local.d -d couchdb
-    environment:
-      COUCHDB_USER: root
-      COUCHDB_PASSWORD: secret
-    networks:
-      - local_env_dev_network
+  # # http://localhost:5984/_utils/# 
+  # couchdb:
+  #   image: couchdb:latest
+  #   container_name: couchdb
+  #   ports:
+  #     - '5984:5984'
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./couchdb_data:/opt/couchdb/etc/local.d -d couchdb
+  #   environment:
+  #     COUCHDB_USER: root
+  #     COUCHDB_PASSWORD: secret
+  #   networks:
+  #     - local_env_dev_network
 
   redis:
     image: redis:latest
@@ -68,15 +68,15 @@ services:
     networks:
       - local_env_dev_network
 
-  # http://localhost:8080
-  adminer:
-    image: adminer
-    container_name: adminer
-    restart: unless-stopped
-    ports:
-      - '8080:8080'
-    networks: 
-      - local_env_dev_network
+  # # http://localhost:8080
+  # adminer:
+  #   image: adminer
+  #   container_name: adminer
+  #   restart: unless-stopped
+  #   ports:
+  #     - '8080:8080'
+  #   networks: 
+  #     - local_env_dev_network
   
   # http://localhost:9000
   portainer:
@@ -115,14 +115,14 @@ services:
       - local_env_dev_network
 
 volumes:
-  mysql_data:
-    driver: local
+  # mysql_data:
+  #   driver: local
   postgres_data:
     driver: local
-  mongo_data:
-    driver: local
-  couchdb_data:
-    driver: local
+  # mongo_data:
+  #   driver: local
+  # couchdb_data:
+  #   driver: local
   portainer_data:
     driver: local
 
