@@ -3,3 +3,4 @@ mysql_data/
 mongo_data/
 couchdb_data/
 .DS_Store
+monitoring/grafana_data

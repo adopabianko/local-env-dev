@@ -15,3 +15,7 @@ make start
 - Portainer (Web Application Monitoring Docker)
 - RabbitMQ
 - PgAdmin4
+
+### Monitoring
+    - Grafana
+    - Jaeger
